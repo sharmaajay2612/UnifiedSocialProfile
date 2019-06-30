@@ -5,6 +5,7 @@ import com.ajay.UnifiedSocialProfile.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import twitter4j.TwitterException;
+import twitter4j.api.UsersResources;
 
 import java.util.List;
 
@@ -20,5 +21,10 @@ public class UserService {
     public List<String> showTimeline() throws TwitterException
     {
         return userDao.getTimeLine();
+    }
+
+    public UsersResources showUser() throws TwitterException
+    {
+        return userDao.getUser();
     }
 }

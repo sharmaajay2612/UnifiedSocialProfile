@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import twitter4j.TwitterException;
+import twitter4j.api.UsersResources;
 
 import java.util.List;
 
@@ -21,9 +22,15 @@ public class UserController {
     }
 
     @GetMapping("/twitterTimeline")
-    public List<String> getUser() throws TwitterException
+    public List<String> getUserTimeline() throws TwitterException
     {
         return userService.showTimeline();
+    }
+
+    @GetMapping("/twitterUser")
+    public UsersResources getTwitterUserInfo() throws TwitterException
+    {
+        return userService.showUser();
     }
 
 }

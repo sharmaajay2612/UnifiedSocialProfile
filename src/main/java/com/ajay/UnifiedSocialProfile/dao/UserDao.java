@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import twitter4j.api.UsersResources;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +27,11 @@ public class UserDao {
     public List<String> getTimeLine() throws TwitterException {
         Twitter twitter = getTwitterInstance;
         return twitter.getHomeTimeline().stream().map(item -> item.getText()).collect(Collectors.toList());
+    }
+
+    public UsersResources getUser() throws TwitterException{
+        Twitter twitter = getTwitterInstance;
+        return twitter.users();
     }
 
 
