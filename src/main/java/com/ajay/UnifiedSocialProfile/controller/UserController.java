@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import twitter4j.TwitterException;
+
+import java.util.List;
 
 @RestController
 public class UserController {
-
     @Autowired
     UserService userService;
     @GetMapping("/codeforces/{handle}")
@@ -18,4 +20,11 @@ public class UserController {
         return userService.getUserInfo(handle);
     }
 
+    @GetMapping("/twitterTimeline")
+    public List<String> getUser() throws TwitterException
+    {
+        return userService.showTimeline();
+    }
+
 }
+
